@@ -22,4 +22,5 @@ setup(
         "google-generativeai",
         "python-dotenv",
     ],
+    include_package_data=True,
 )
