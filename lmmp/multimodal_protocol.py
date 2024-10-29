@@ -26,7 +26,7 @@ class LargeMultimodalModelProtocol:
             
         # Parse grid parameters from filename
         filename = os.path.basename(self.grid_image_path)
-        params = re.match(r'patch_grid_p(\d+)_g(\d+)_(\d+)x(\d+)_.*\.jpg', filename)
+        params = re.match(r'patch_grid_p(\d+)_g(\d+)_(\d+)x(\d+)\.jpg', filename)
         if not params:
             raise ValueError("Invalid grid filename format")
             
