@@ -148,7 +148,7 @@ The protocol uses a pre-computed patch dictionary organized in a grid layout:
 - Generated from a dataset of several thousands images
 - Ordered using UMAP for smooth transitions between patches and enable patching granularity to be selected at runtime
 
-![Patch Grid Dictionary Bank](https://raw.githubusercontent.com/SelfishGene/LMMP-protocol/main/figures/patch_grid_p128_g64_8192x8192.jpg)
+![Patch Grid Dictionary Bank](https://github.com/SelfishGene/LMMP-protocol/blob/main/patch_grid_p128_g64_8192x8192.jpg)
 
 ## Contributing
 
