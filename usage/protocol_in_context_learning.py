@@ -12,7 +12,7 @@ from PIL import Image
 from datetime import datetime
 import matplotlib.pyplot as plt
 import google.generativeai as genai
-from multimodal_protocol import LargeMultimodalModelProtocol
+from lmmp import LargeMultimodalModelProtocol
 from api_key_manager import initialize_api_keys, print_api_keys
 
 #%% setup API keys

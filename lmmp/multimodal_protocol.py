@@ -12,7 +12,9 @@ import matplotlib.pyplot as plt
 class LargeMultimodalModelProtocol:
     """Large Multimodal Model Protocol - Image encoding/decoding class"""
     
-    def __init__(self, grid_image_path='patch_grid_p128_g64_8192x8192.jpg'):
+    def __init__(self, grid_image_path=None):
+        if grid_image_path is None:
+            grid_image_path = os.path.join(os.path.dirname(__file__), "patch_grid_p128_g64_8192x8192.jpg")
         self.grid_image_path = grid_image_path
         self._init_patch_dictionary()
     

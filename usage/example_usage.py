@@ -10,7 +10,7 @@ import tiktoken
 import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
-from multimodal_protocol import LargeMultimodalModelProtocol
+from lmmp import LargeMultimodalModelProtocol
 
 #%% Helper functions
 

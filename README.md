@@ -102,21 +102,24 @@ pip install git+https://github.com/SelfishGene/LMMP-protocol.git
 
 2. Basic usage:
 ```python
-from multimodal_protocol import LargeMultimodalModelProtocol
+from lmmp import LargeMultimodalModelProtocol
 
 # Initialize with patch dictionary
-LMMP = LargeMultimodalModelProtocol('patch_grid_p128_g64_8192x8192.jpg')
+LMMP = LargeMultimodalModelProtocol()
 
 # Configure encoding parameters
 patch_sizes = [64, 32, 16]
 patch_fractions = [1.0, 0.8, 0.6]
 patch_quantizations = ['rgb', 'rgb', 1024]
 
-# Encode and decode image
-encoded_str = LMMP.image2string(image, patch_sizes, patch_fractions, patch_quantizations)
-reconstructed_image = LMMP.string2image(encoded_str)
-```
+# Load image
+image_PIL = Image.open('/path/to/image.jpg')
 
+# Encode and decode image
+encoded_str = LMMP.image2string(image_PIL, patch_sizes, patch_fractions, patch_quantizations)
+image_rec_PIL = LMMP.string2image(encoded_str)
+```
+## Example encodings with various parameters
 ![Various encodings examples](https://raw.githubusercontent.com/SelfishGene/LMMP-protocol/main/figures/LMMP_encoding_params_FLUX1_dev_image_0000062.png)
 
 ## Requirements
@@ -133,13 +136,19 @@ reconstructed_image = LMMP.string2image(encoded_str)
 
 ```
 LMMP-protocol/
-├── multimodal_protocol.py             # Core protocol implementation
-├── example_usage.py                   # Usage examples and visualization
-├── in_context_learning_of_protocol.py # Usage examples for in-context learning of (text->image) or (image->text) 
-├── api_key_manager.py                 # API key management utilities
-├── create_patch_grid_images.py        # Dictionary generation
-└── patch_grid_p128_g64_8192x8192.jpg  # patch dictionary
-
+├── lmmp/                                  # LMMP package
+│   ├── __init__.py                        # Package initialization
+│   ├── multimodal_protocol.py             # Core protocol implementation
+│   └── patch_grid_p128_g64_8192x8192.jpg  # Pre-computed patch dictionary
+├── usage/                                 
+│   ├── example_usage.py                   # Usage examples and visualization
+│   ├── protocol_in_context_learning.py    # Usage examples for in-context learning of (text->image) or (image->text) 
+│   ├── api_key_manager.py                 # API key management utilities
+│   └── create_patch_grid_images.py        # Patch dictionary generation tool
+├── figures/                               
+│   └── LMMP_encoding_params_*.png         # Sample images with various encoding parameters
+├── README.md                              # Documentation and usage guide
+└── setup.py                               # Installation script
 ```
 
 ### Patch Dictionary Generation
@@ -148,7 +157,7 @@ The protocol uses a pre-computed patch dictionary organized in a grid layout:
 - Generated from a dataset of several thousands images
 - Ordered using UMAP for smooth transitions between patches and enable patching granularity to be selected at runtime
 
-![Patch Grid Dictionary Bank](https://github.com/SelfishGene/LMMP-protocol/blob/main/patch_grid_p128_g64_8192x8192.jpg)
+![Patch Grid Dictionary Bank](https://github.com/SelfishGene/LMMP-protocol/blob/main/lmmp/patch_grid_p128_g64_8192x8192.jpg)
 
 ## Contributing
 

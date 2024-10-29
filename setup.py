@@ -15,7 +15,7 @@ setup(
     packages=find_packages(),
     python_requires=">=3.8",
     install_requires=[
-        "pillow",
+        "Pillow",
         "numpy",
         "scikit-learn",
         "umap-learn",
